@@ -1,0 +1,10 @@
+[user]
+	name = vrom911
+	email = veronika@holmusk.com
+    signingkey = 1542C977F9346CAB
+
+[commit]
+    gpgsign = true
+
+[pull]
+    rebase = true

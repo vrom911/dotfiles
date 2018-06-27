@@ -1,0 +1,8 @@
+directories = []
+files = [ ".bash_profile"
+        , ".gitconfig"
+        , ".life"
+        , ".spacemacs"
+        , ".stylish-haskell.yaml"
+        , ".vimrc"
+        ]
