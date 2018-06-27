@@ -4,6 +4,5 @@ files = [ ".bash_profile"
         , ".life"
         , ".spacemacs"
         , ".stylish-haskell.yaml"
-        , ".summoner.toml"
         , ".vimrc"
         ]
