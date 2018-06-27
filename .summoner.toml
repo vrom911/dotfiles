@@ -17,6 +17,7 @@ extensions = [ "DeriveGeneric"
              , "TypeApplications"
              ]
 
+
 [prelude]
     package = "universum"
     module  = "Universum"
