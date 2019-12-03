@@ -31,9 +31,14 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     rust
+     csv
+     sql
+     elm
      javascript
      html
      yaml
+     no-dots
      ;; version control configuration
      git
      (version-control :variables
@@ -44,15 +49,17 @@ values."
      ;; HASKELL & EDITING
      auto-completion
      spell-checking
-     (haskell :variables haskell-completion-backend 'company-ghci)
-     markdown
+     (haskell :variables haskell-completion-backend 'company-intero)
+     idris
+     (markdown :variables markdown-live-preview-engine 'vmd)
+     ;; asm-mode
+     ;; nasm-mode
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
      helm
-     no-dots
      ;; better-defaults
      emacs-lisp
      ;; (shell :variables
@@ -94,7 +101,7 @@ values."
    ;; This variable has no effect if Emacs is launched with the parameter
    ;; `--insecure' which forces the value of this variable to nil.
    ;; (default t)
-   dotspacemacs-elpa-https nil
+   dotspacemacs-elpa-https t
    ;; Maximum allowed time in seconds to contact an ELPA repository.
    dotspacemacs-elpa-timeout 5
    ;; If non nil then spacemacs will check for updates at startup
@@ -321,15 +328,17 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
-    ;; enabling session save
-    (desktop-save-mode)
-    (desktop-read)
 
-    (custom-set-variables
-       '(haskell-stylish-on-save t)
-       '(yas-indent-line (quote fixed))
-    )
+  (desktop-save-mode)
+  (desktop-read)
+;;  (add-to-list 'spacemacs-indent-sensitive-modes 'nasm-mode)
+
+  ;; HASKELL
+  (custom-set-variables
+    '(haskell-stylish-on-save t)
+    '(yas-indent-line (quote fixed))
   )
+ )
 
 ;; Editor VIM
 (defun my-save-if-bufferfilename ()
@@ -350,11 +359,11 @@ you should place your code here."
 (setq org-todo-keywords '((type "TODO" "PROG" "STOP" "ONGO" "|" "DONE" "FAIL")))
 (setq org-todo-keyword-faces
   '(("TODO" . "orange")
-    ("PROG" . "cornflower blue")
+    ("PROG" . "#ffaa72")
     ("STOP" . "yellow")
-    ("ONGO" . "#0ffb72")
+    ("ONGO" . "cornflower blue")
     ("FAIL" . (:foreground "red" :weight bold))
-    ("DONE" . (:foreground "dark green" :weight bold))))
+    ("DONE" . (:foreground "#0ffb72" :weight bold))))
 ; If you clock out task and it's 0 time, the record is not stored.
 (setq org-clock-out-remove-zero-time-clocks t)
 ; Clocking tasks are in clock report
@@ -368,16 +377,19 @@ you should place your code here."
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages (quote (dracula-theme evil-unimpaired))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
-
+ '(default ((((type nil)) (:background "#000000" :foreground "#f8f8f2")) (((class color) (min-colors 89)) (:background "#282a36" :foreground "#f8f8f2")))))
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(haskell-stylish-on-save t)
+ '(package-selected-packages
+   (quote
+    (toml-mode racer pos-tip cargo rust-mode csv-mode sql-indent elm-mode let-alist idris-mode prop-menu yaml-mode ws-butler winum which-key web-mode web-beautify volatile-highlights vmd-mode vi-tilde-fringe uuidgen use-package toc-org tagedit spaceline smeargle slim-mode scss-mode sass-mode restart-emacs rainbow-delimiters pug-mode popwin persp-mode pcre2el paradox orgit org-bullets open-junk-file neotree move-text mmm-mode markdown-toc magit-gitflow macrostep lorem-ipsum livid-mode linum-relative link-hint less-css-mode json-mode js2-refactor js-doc intero info+ indent-guide hungry-delete hlint-refactor hl-todo hindent highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-hoogle helm-gitignore helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag haskell-snippets google-translate golden-ratio gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gh-md fuzzy flyspell-correct-helm flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu emmet-mode elisp-slime-nav dumb-jump dracula-theme diff-hl define-word company-web company-tern company-statistics company-ghci company-ghc company-cabal column-enforce-mode coffee-mode cmm-mode clean-aindent-mode auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell)))
+ '(yas-indent-line (quote fixed)))
