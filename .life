@@ -1,8 +1,9 @@
 directories = []
-files = [ ".bash_profile"
-        , ".gitconfig"
-        , ".life"
-        , ".spacemacs"
-        , ".stylish-haskell.yaml"
-        , ".vimrc"
-        ]
+files =
+    [ ".gitconfig"
+    , ".life"
+    , ".spacemacs"
+    , ".stylish-haskell.yaml"
+    , ".vimrc"
+    , ".zshrc"
+    ]
