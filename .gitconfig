@@ -1,10 +1,11 @@
 [user]
-	name = vrom911
-	email = veronika@holmusk.com
-    signingkey = 1542C977F9346CAB
-
+    name = Veronika Romashkina
+    email = vrom911@gmail.com
+    signingkey = A5849E99E6D02B61
+    login = vrom911
+[core]
+    editor = vim
 [commit]
     gpgsign = true
-
 [pull]
     rebase = true
