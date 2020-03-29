@@ -29,7 +29,7 @@ set expandtab
 ">>>
 
 set ruler
-set relativenumber
+set number
 set mouse=a
 
 set undofile
@@ -50,6 +50,11 @@ set colorcolumn=80
 
 set list
 set listchars=tab:▸\ ,eol:¬
+
+"<<<
+nnoremap j gj
+nnoremap k gk
+">>>
 
 inoremap <F1> <ESC>
 nnoremap <F1> <ESC>

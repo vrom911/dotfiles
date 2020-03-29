@@ -1,8 +1,8 @@
 [user]
-    name = Veronika Romashkina
+    name  = Veronika Romashkina
     email = vrom911@gmail.com
-    signingkey = A5849E99E6D02B61
     login = vrom911
+    signingkey = A5849E99E6D02B61
 [core]
     editor = vim
 [commit]
